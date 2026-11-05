@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="声優・アーティストの公式ニュースを解析し、公演日程や申込期限をGoogle Calendarへ同期するPythonアプリの紹介。">
+  <title>声優・アーティスト締切管理 | アプリ紹介</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header"><div class="container"><a class="brand" href="../../index.html">個人開発アプリのご案内</a><nav aria-label="アプリ"><a href="index.html" aria-current="page">アプリ紹介</a><a href="privacy.html">プライバシーポリシー</a></nav></div></header>
+  <main id="main" class="container prose">
+    <p class="breadcrumbs"><a href="../../index.html">トップ</a> / 声優・アーティスト締切管理</p>
+    <div class="intro"><p class="eyebrow">ニュース解析 / カレンダー連携</p><h1>声優・アーティスト<br>締切管理</h1><p class="lead">公式ニュースから公演日程や申込期限を抽出し、SQLiteに保存してGoogle Calendarへ同期するPythonアプリケーションです。</p></div>
+    <aside class="notice" aria-label="開発状況"><p><strong>開発中</strong></p><p>抽出漏れ、誤判定、重複登録などの課題があります。重要な締切は必ず公式情報で確認してください。</p></aside>
+    <section><h2>主な機能</h2><ul><li>対応する公式サイトのニュースを定期取得し、記事の更新を確認。</li><li>Gemini APIで記事を解析し、公演・チケット受付・応募や通販などの日時情報を抽出。</li><li>記事本文、抽出結果、確認タスク、同期状態をSQLiteで管理。</li><li>設定と同期ルールに従い、Google Calendar上の管理対象予定を取得・作成・更新・削除。</li><li>SQLiteの世代バックアップと、rcloneを使用した設定先への転送。</li></ul></section>
+    <section><h2>実行環境と想定利用者</h2><p>Python 3.11以上が必要です。Raspberry Piでの定期実行を想定し、systemd向けの配備ファイルを備えています。公式ニュースの予定や締切を自分のカレンダーで管理したい方に向けた、利用者自身がAPI認証と実行環境を設定するツールです。</p><p>第三者への提供範囲や、個人利用に限定する運用かどうかは公開前に確認が必要です。このサイトはアプリの説明用で、ここからGoogleアカウントを連携する機能はありません。</p></section>
+    <section><h2>Google APIの利用</h2><div class="table-wrap"><table><caption>連携サービスと利用するデータ</caption><thead><tr><th scope="col">サービス</th><th scope="col">用途・データ</th></tr></thead><tbody><tr><th scope="row">Google Calendar API</th><td>設定されたカレンダーのアクセス確認、管理対象予定の照合と同期。カレンダーID、予定ID、件名、日時、説明、場所、通知設定、状態、更新識別子などを扱います。</td></tr><tr><th scope="row">Gemini API</th><td>公式ニュースのタイトル、公開日、アーティスト名、正規化本文を送り、公演や締切を抽出します。Google CalendarのOAuth権限とは別のAPIキーを使用します。</td></tr></tbody></table></div><p>CalendarのOAuthスコープは <code>https://www.googleapis.com/auth/calendar.events</code> と <code>https://www.googleapis.com/auth/calendar.readonly</code> です。要求権限は管理対象予定より広い範囲を含むため、詳細はポリシーをご確認ください。</p><p>調査した実装では、Gmail APIおよびGoogle Drive APIの直接利用は確認されていません。バックアップ転送先はrcloneの運用設定に依存します。</p><p><a class="button" href="privacy.html">データの取り扱いを読む</a></p></section>
+    <section id="contact"><h2>お問い合わせ</h2><p>問い合わせ窓口は公開準備中です。公開可能な連絡先の確認後に掲載します。</p></section>
+    <p><a href="../../index.html">アプリ一覧へ戻る</a></p>
+  </main>
+  <footer class="container">最終更新日：<time datetime="2026-11-05">2026年11月5日</time></footer>
+</body>
+</html>
